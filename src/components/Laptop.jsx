@@ -17,7 +17,7 @@ export default function Laptop(props) {
     <primitive
       ref={group}
       object={scene}
-      scale={[0.35, 0.35, 0.35]}
+      scale={[0.25, 0.25, 0.25]}
       position={[0, 0.02, 0]}
       castShadow
       receiveShadow
