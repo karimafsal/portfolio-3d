@@ -68,9 +68,6 @@ html {
   pointer-events: none;
 }
 
-
-
-
 /* TERMINAL POPUP */
 .terminal {
   position: absolute;
@@ -84,7 +81,7 @@ html {
   border-radius: 12px;
   display: flex;
   flex-direction: column;
-  overflow: visible;       /* required for image to show */
+  overflow: visible; /* required for image to show */
   z-index: 30;
   backdrop-filter: blur(6px);
   transition: 0.3s ease;
@@ -122,14 +119,14 @@ html {
 /* Profile image overlapping on top */
 .terminal-profile {
   position: absolute;
-  top: -55px;            /* half outside */
+  top: -55px; /* half outside */
   left: 50%;
   transform: translateX(-50%);
   width: 110px;
   height: 110px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #05070a; 
+  border: 4px solid #05070a;
   z-index: 40;
 
   /* Slight aesthetic glow */
@@ -138,7 +135,7 @@ html {
 
 /* Terminal content with space for image */
 .terminal-content {
-  padding: 65px 20px 20px 20px; 
+  padding: 65px 20px 20px 20px;
   color: #0f0;
   font-family: "Courier New", monospace;
   font-size: 14px;
@@ -175,5 +172,162 @@ html {
 }
 
 @keyframes blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ------------------------- */
+/*     MACOS WINDOW PANEL    */
+/* ------------------------- */
+
+.mac-window {
+  position: absolute;
+  top: 12%;
+  right: 5%;
+  width: 60%;
+  height: 80%;
+  padding: 0;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+  overflow: hidden;
+  z-index: 40;
+
+  animation: macOpen 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: top right;
+}
+
+@keyframes macOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translate(20px, -20px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.mac-header {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  background: rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mac-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.mac-btn {
+  width: 14px;
+  height: 14px;
+  font-size: 10px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.mac-btn.red {
+  background: #ff5f57;
+}
+.mac-btn.yellow {
+  background: #febc2e;
+}
+.mac-btn.green {
+  background: #28c840;
+}
+
+.mac-title {
+  margin-left: 20px;
+  font-size: 13px;
+  opacity: 0.85;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.mac-content {
+  padding: 18px;
+  overflow-y: auto;
+  height: calc(100% - 40px);
+  color: #fff;
+}
+
+.project-card {
+  padding: 16px;
+  margin-bottom: 16px;
+  background: rgba(31, 30, 30, 0.418);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  transition: 0.3s ease;
+}
+
+.project-card:hover {
+  background: rgba(56, 55, 55, 0.12);
+  transform: translateY(-3px);
+}
+
+.tech {
+  opacity: 0.75;
+  font-size: 13px;
+}
+
+.desc {
+  margin: 6px 0 12px;
+  opacity: 0.85;
+  font-size: 13px;
+}
+
+.github-link {
+  font-size: 13px;
+  color: #57ffb2;
+  text-decoration: none;
+}
+
+.github-link:hover {
+  text-decoration: underline;
+}
+
+/* macOS thin scrollbar */
+.mac-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.mac-content::-webkit-scrollbar-track {
+  background: transparent; /* macOS track is invisible */
+}
+
+.mac-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  transition: 0.25s ease;
+}
+
+.mac-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* Firefox support */
+.mac-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
 }
